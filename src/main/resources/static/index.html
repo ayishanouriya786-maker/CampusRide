@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CampusRide — Student Mobility</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="toast"></div>
+
+<header class="nav">
+  <a class="brand" href="#" onclick="showPage('home')">
+    <span class="brand-mark">C</span>
+    <span>Campus<span>Ride</span></span>
+  </a>
+  <nav>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('vehicles')">Vehicles</button>
+    <button onclick="showPage('active')">My Ride</button>
+    <button onclick="showPage('history')">History</button>
+  </nav>
+  <div id="navAuth"></div>
+</header>
+
+<main>
+<section id="home" class="page active-page">
+  <div class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow"><span></span> CAMPUS MOBILITY, REIMAGINED</div>
+      <h1>Move around campus.<br><em>Own your time.</em></h1>
+      <p>Book bicycles, electric scooters and bikes in seconds. One campus. One simple ride.</p>
+      <div class="hero-actions">
+        <button class="btn primary" onclick="showPage('vehicles')">Explore vehicles <b>→</b></button>
+        <button class="btn ghost" onclick="openAuth('register')">Create student account</button>
+      </div>
+      <div class="mini-stats">
+        <div><strong>06</strong><span>vehicles ready</span></div>
+        <div><strong>24/7</strong><span>self-service</span></div>
+        <div><strong>₹20</strong><span>starting / hour</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="glow"></div>
+      <div class="vehicle-orb"><span>⚡</span></div>
+      <div class="floating-card card-one"><small>AVAILABLE NOW</small><strong>Volt X</strong><span>Electric Scooter · ₹45/hr</span></div>
+      <div class="floating-card card-two"><span class="live-dot"></span> Campus-ready fleet</div>
+    </div>
+  </div>
+
+  <div class="feature-strip">
+    <div><span>01</span><h3>Pick</h3><p>Choose a vehicle that fits your route.</p></div>
+    <div><span>02</span><h3>Ride</h3><p>Set your duration and confirm instantly.</p></div>
+    <div><span>03</span><h3>Return</h3><p>Return it and get your digital bill.</p></div>
+  </div>
+</section>
+
+<section id="vehicles" class="page">
+  <div class="section-head">
+    <div><div class="eyebrow"><span></span> FLEET</div><h2>Choose your ride.</h2><p>Everything you need for a quick campus trip.</p></div>
+    <div class="search"><span>⌕</span><input id="search" placeholder="Search vehicle..." oninput="loadVehicles()"></div>
+  </div>
+  <div class="filters">
+    <button class="filter active" data-type="all" onclick="setFilter(this)">All vehicles</button>
+    <button class="filter" data-type="bicycle" onclick="setFilter(this)">🚲 Bicycle</button>
+    <button class="filter" data-type="scooter" onclick="setFilter(this)">⚡ Scooter</button>
+    <button class="filter" data-type="bike" onclick="setFilter(this)">🏍 Bike</button>
+  </div>
+  <div id="vehicleGrid" class="vehicle-grid"></div>
+</section>
+
+<section id="active" class="page">
+  <div class="section-head"><div><div class="eyebrow"><span></span> YOUR RIDE</div><h2>My active rental.</h2><p>Manage your current campus ride.</p></div></div>
+  <div id="activeBox"></div>
+</section>
+
+<section id="history" class="page">
+  <div class="section-head"><div><div class="eyebrow"><span></span> ACTIVITY</div><h2>Rental history.</h2><p>Your previous CampusRide trips.</p></div></div>
+  <div id="historyBox"></div>
+</section>
+</main>
+
+<div id="authModal" class="modal hidden">
+ <div class="modal-card auth-card">
+  <button class="close" onclick="closeModal('authModal')">×</button>
+  <div class="auth-logo">C</div>
+  <div id="authContent"></div>
+ </div>
+</div>
+
+<div id="rentModal" class="modal hidden">
+ <div class="modal-card">
+  <button class="close" onclick="closeModal('rentModal')">×</button>
+  <div id="rentContent"></div>
+ </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
